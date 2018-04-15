@@ -67,12 +67,10 @@ export LD_LIBRARY_PATH=~/mjpg-streamer
 ./mjpg_streamer -i "input_uvc.so -d /dev/video0 -r 640x480 -f 30" -o "output_http.so -w ./www"
 ```
 or
+
 ```
 /home/pi/raspberry-live-stream/mjpg-streamer/mjpg_streamer -i "/home/pi/raspberry-live-stream/mjpg-streamer/input_uvc.so -d /dev/video0 -r 1280x768 -f 30" -o "/home/pi/raspberry-live-stream/mjpg-streamer/output_http.so -w /home/pi/raspberry-live-stream/mjpg-streamer/www -p 8080" 
 ```
-
-
-
 
 ### Sources
 Source: https://www.raspberrypi.org/forums/viewtopic.php?t=77796 - pulled on 15th of april 2018
