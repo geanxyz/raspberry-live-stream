@@ -54,7 +54,7 @@ patch -p0 < ../input_uvc_patch
 Compile it
 ```
 make
-gg```
+```
 
 and install it
 ```
