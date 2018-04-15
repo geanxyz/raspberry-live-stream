@@ -1,0 +1,55 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:		mjpg-streamer
+# Required-Start:	
+# Required-Stop:	
+# Default-Start:	2 3 4 5
+# Default-Stop:		
+# Short-Description:	MJPG-Streamer
+### END INIT INFO
+
+#set -e
+
+# /etc/init.d/ssh: start and stop the mjpg-streamer daemon
+
+#. /lib/lsb/init-functions
+
+
+case "$1" in
+  start)
+	cd /home/pi/mjpg-streamer2
+	export LD_LIBRARY_PATH=/home/pi/mjpg-streamer2/
+	sudo -u pi /home/pi/mjpg-streamer2/mjpg_streamer -i "/home/pi/mjpg-streamer2/input_uvc.so -d /dev/video0 -r 1280x768 -f 30" -o "/home/pi/mjpg-streamer2/output_http.so -w /home/pi/mjpg-streamer2/www -p 8080" -b
+	;;
+  stop)
+	MJPST=`ps auxf |grep mjpg-streamer |grep -v "grep"`
+	if [ -n "$MJPST" ]; then
+		killall mjpg-streamer
+	else
+		echo "isnt running"
+	fi
+	;;
+
+
+  restart)
+	  $0 stop
+	  $0 start
+	;;
+
+  status)
+	MJPST=`ps auxf |grep mjpg-streamer |grep -v "grep"`
+	if [ -n "$MJPST" ]; then
+		echo "is running"
+	else
+		echo "is not running"
+	fi
+
+	;;
+
+  *)
+	log_action_msg "Usage: {start|stop|restart}" || true
+	exit 1
+esac
+
+exit 0
