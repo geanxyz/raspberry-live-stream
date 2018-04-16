@@ -71,6 +71,8 @@ or
 ```
 /home/pi/raspberry-live-stream/mjpg-streamer/mjpg_streamer -i "/home/pi/raspberry-live-stream/mjpg-streamer/input_uvc.so -d /dev/video0 -r 1280x768 -f 30" -o "/home/pi/raspberry-live-stream/mjpg-streamer/output_http.so -w /home/pi/raspberry-live-stream/mjpg-streamer/www -p 8080" 
 ```
+### Browser
+Try to access your new installation with: http://<ip raspi>:8080/  or http://<ip raspi>:8080/?action=stream
 
 ### Sources
 * Source: https://www.raspberrypi.org/forums/viewtopic.php?t=77796 - pulled on 15th of april 2018
